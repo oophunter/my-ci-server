@@ -44,6 +44,8 @@ function renderRecommendations() {
     const card = document.createElement('div');
     card.className = 'recommendation-card';
 
+
+
     // Header area of the card
     const cardHeader = document.createElement('div');
     cardHeader.className = 'card-header-info';
