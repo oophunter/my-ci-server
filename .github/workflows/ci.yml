@@ -28,3 +28,27 @@ jobs:
 
       - name: Build Web Application
         run: npm run build
+
+      - name: Deploy to EC2
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+          # Create destination directory if it doesn't exist
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} \
+            "mkdir -p ~/my-ci-server"
+
+          # Copy only the built dist folder to EC2
+          scp -i private_key.pem -o StrictHostKeyChecking=no -r \
+            dist \
+            ec2-user@${{ secrets.EC2_HOST }}:~/my-ci-server/
+
+          # Restart the static file server using pm2 on EC2
+          ssh -i private_key.pem -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} "
+            cd ~/my-ci-server
+            pm2 restart my-ci-server || pm2 start 'serve -s dist -l 4173' --name 'my-ci-server'
+          "
+
+          # Clean up the key from the runner
+          rm -f private_key.pem
