@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Design System & Variable Declarations
+   ========================================================================== */
+:root {
+  --font-main: 'Noto Sans KR', sans-serif;
+  --font-numbers: 'Outfit', sans-serif;
+
+  /* Theme Palette */
+  --bg-deep: #09070f;
+  --bg-radial: radial-gradient(circle at 50% 50%, #150f2b 0%, #06040a 100%);
+  
+  --primary: #7c3aed;
+  --primary-glow: rgba(124, 58, 237, 0.45);
+  --secondary: #06b6d4;
+  --secondary-glow: rgba(6, 182, 212, 0.2);
+  --accent: #d946ef;
+  
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+
+  /* Glassmorphism Styles */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.35);
+
+  /* Lotto Ball Colors (Korean Standard) */
+  --lotto-yellow: #f59e0b;
+  --lotto-blue: #3b82f6;
+  --lotto-red: #ef4444;
+  --lotto-gray: #6b7280;
+  --lotto-green: #10b981;
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-deep);
+  background-image: var(--bg-radial);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+.app-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.logo-emoji {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px var(--primary-glow));
+  animation: float 4s ease-in-out infinite;
+}
+
+.app-header h1 {
+  font-family: var(--font-numbers);
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #fff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+/* ==========================================================================
+   Control Panel & Buttons
+   ========================================================================== */
+.control-panel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.glow-btn {
+  position: relative;
+  flex: 1;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border: none;
+  padding: 1.1rem 1.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-main);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 10px var(--primary-glow);
+  overflow: hidden;
+  text-align: center;
+}
+
+.glow-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-glow);
+}
+
+.glow-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Secondary Button ("다시하기") Style */
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  box-shadow: none;
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled State style */
+.glow-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-glow-effect {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: 0.75s;
+}
+
+.glow-btn:hover:not(:disabled) .btn-glow-effect {
+  left: 120%;
+}
+
+/* ==========================================================================
+   Recommendations Display
+   ========================================================================== */
+.recommendations-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.placeholder-msg {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: var(--glass-bg);
+  border: 1px dashed var(--glass-border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.recommendation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.recommendation-card:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  background: var(--glass-bg-hover);
+}
+
+.card-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.set-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-info {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  color: var(--text-muted);
+}
+
+.balls-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+/* Premium Lotto Ball UI */
+.lotto-ball {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-numbers);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  animation: ball-scale-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+/* Glass shine overlay for 3D depth */
+.lotto-ball::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 35%;
+  height: 35%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+}
+
+/* Korea Lotto Range Specific Colors */
+.lotto-ball.num-1-10 {
+  background-color: var(--lotto-yellow);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255,255,255,0.4), 0 0 8px rgba(245, 158, 11, 0.2);
+}
+.lotto-ball.num-11-20 {
+  background-color: var(--lotto-blue);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255,255,255,0.4), 0 0 8px rgba(59, 130, 246, 0.2);
+}
+.lotto-ball.num-21-30 {
+  background-color: var(--lotto-red);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255,255,255,0.4), 0 0 8px rgba(239, 68, 68, 0.2);
+}
+.lotto-ball.num-31-40 {
+  background-color: var(--lotto-gray);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255,255,255,0.4), 0 0 8px rgba(107, 114, 128, 0.2);
+}
+.lotto-ball.num-41-45 {
+  background-color: var(--lotto-green);
+  box-shadow: inset -3px -3px 8px rgba(0, 0, 0, 0.4), inset 3px 3px 8px rgba(255,255,255,0.4), 0 0 8px rgba(16, 185, 129, 0.2);
+}
+
+/* ==========================================================================
+   Footer Section
+   ========================================================================== */
+.app-footer {
+  text-align: center;
+  padding: 2.5rem 0 1rem 0;
+  margin-top: auto;
+  border-top: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes ball-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

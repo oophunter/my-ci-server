@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로또 6/45 AI 시뮬레이터 & 추천기</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="logo-area">
+          <span class="logo-emoji">🔮</span>
+          <h1>Lotto <span class="gradient-text">AI Simulator</span></h1>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <!-- Control Panel -->
+        <section class="control-panel">
+          <div class="button-group">
+            <button id="btn-generate" class="glow-btn">
+              <span class="btn-text">추천번호 생성하기</span>
+              <span class="btn-glow-effect"></span>
+            </button>
+            <button id="btn-reset" class="glow-btn secondary-btn" disabled>
+              <span class="btn-text">다시하기</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Dynamic Content -->
+        <section class="recommendations-section">
+          <h2 class="section-title">✨ 추천결과 (5세트)</h2>
+          <div id="recommendations-container" class="cards-list">
+            <div class="placeholder-msg">
+              생성하기 버튼을 눌러 시뮬레이션을 가동해 주세요.
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>&copy; 2026 JayKim. All rights reserved.</p>
+      </footer>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
