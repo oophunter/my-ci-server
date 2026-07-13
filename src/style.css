@@ -213,13 +213,7 @@ body {
   gap: 0.5rem;
 }
 
-.badge-info {
-  font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 0.2rem 0.6rem;
-  border-radius: 20px;
-  color: var(--text-muted);
-}
+
 
 .balls-row {
   display: flex;

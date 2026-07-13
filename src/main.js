@@ -49,7 +49,6 @@ function renderRecommendations() {
     cardHeader.className = 'card-header-info';
     cardHeader.innerHTML = `
       <span class="set-title">🔮 추천 조합 #${item.id}</span>
-      <span class="badge-info">시뮬레이션 100회 기반</span>
     `;
     card.appendChild(cardHeader);
 
