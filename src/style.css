@@ -106,20 +106,13 @@ body {
   margin-bottom: 2.5rem;
 }
 
-.button-group {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-}
-
 .glow-btn {
   position: relative;
-  flex: 1;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   border: none;
-  padding: 1.1rem 1.5rem;
+  padding: 1.1rem 2.8rem;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   border-radius: 50px;
   cursor: pointer;
@@ -138,28 +131,6 @@ body {
 
 .glow-btn:active:not(:disabled) {
   transform: translateY(1px);
-}
-
-/* Secondary Button ("다시하기") Style */
-.secondary-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  color: var(--text-main);
-  box-shadow: none;
-}
-
-.secondary-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Disabled State style */
-.glow-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
 }
 
 .btn-glow-effect {

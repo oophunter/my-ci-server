@@ -6,19 +6,10 @@ let currentData = null;
 
 // DOM Elements
 const btnGenerate = document.getElementById('btn-generate');
-const btnReset = document.getElementById('btn-reset');
 const recommendationsContainer = document.getElementById('recommendations-container');
 
 // Event Listeners
 btnGenerate.addEventListener('click', handleGenerate);
-btnReset.addEventListener('click', handleReset);
-
-// Original placeholder HTML
-const placeholderHTML = `
-  <div class="placeholder-msg">
-    생성하기 버튼을 눌러 시뮬레이션을 가동해 주세요.
-  </div>
-`;
 
 /**
  * Helper to determine which Lotto Ball class to apply based on Korean standards
@@ -37,24 +28,8 @@ function getBallClass(num) {
 function handleGenerate() {
   currentData = generate5RecommendedSets();
   
-  // Enable the reset button
-  btnReset.removeAttribute('disabled');
-  
   // Render the cards
   renderRecommendations();
-}
-
-/**
- * Handle UI Reset
- */
-function handleReset() {
-  currentData = null;
-  
-  // Reset container to placeholder state
-  recommendationsContainer.innerHTML = placeholderHTML;
-  
-  // Disable the reset button
-  btnReset.setAttribute('disabled', 'true');
 }
 
 /**
